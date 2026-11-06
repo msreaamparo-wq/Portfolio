@@ -14,10 +14,11 @@
 <path class="p p6" pathLength="1" d="M64 188 C140 172 250 196 346 170"/></svg>
 <p class="intro-tag">Portfolio · 2026</p></div><button class="intro-skip" id="introSkip" type="button">Skip</button></div>
 <header class="top"><div class="wrap top-in"><a class="brand" href="#top">rea<i>.</i>amparo</a>
-<nav aria-label="Main"><a href="#work">Work</a><a href="#toolkit">Toolkit</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+<nav class="site-nav" id="siteNav" aria-label="Main navigation"><a href="#work">Work</a><a href="#toolkit">Toolkit</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+<button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-controls="siteNav" aria-expanded="false"><span></span><span></span></button>
 <a class="pill" href="https://github.com/msreaamparo-wq" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></header>
 <main>
-<section class="hero" id="top"><div class="wrap hero-grid">
+<section class="hero" id="top"><canvas class="hero-scene" id="heroScene" aria-hidden="true"></canvas><div class="wrap hero-grid">
 <div><p class="kicker">Computer Science student · App developer</p><h1>Rea Amparo</h1>
 <p class="lead">I build mobile and web apps, and research how computers can read images. I like projects that solve a real problem and teach me how the system works underneath.</p>
 <div class="actions"><a class="cta" href="#work"><span>See my work</span><b aria-hidden="true">→</b></a><a class="link" href="https://github.com/msreaamparo-wq" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
@@ -57,4 +58,4 @@
 <script>(function(){var i=document.getElementById('intro'),r=document.documentElement;if(!i)return;
 function end(){if(i.classList.contains('done'))return;i.classList.add('done');r.classList.remove('intro-on');setTimeout(function(){i.remove()},800)}
 if(r.classList.contains('intro-on')){var t=setTimeout(end,3900);document.getElementById('introSkip').onclick=i.onclick=function(){clearTimeout(t);end()};document.addEventListener('keydown',function(e){if(e.key==='Escape'){clearTimeout(t);end()}})}else i.remove()})();</script>
-<script src="js/photo.js"></script><script src="js/lively.js"></script></body></html>
+<script src="js/photo.js"></script><script src="js/lively.js"></script><script src="js/interactions.js"></script><script type="module" src="js/three-scene.js"></script></body></html>
