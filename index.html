@@ -43,6 +43,14 @@
 <article class="tile"><h3>Developer tools and deployment</h3><ul class="tags"><li>Git</li><li>GitHub</li><li>VS Code</li><li>Android Studio</li><li>Android SDK</li><li>Figma</li><li>pytest</li><li>Python-docx</li><li>pypdf</li><li>npm</li><li>GitHub Pages</li><li>Render</li><li>Vercel</li><li>Kilo Code</li><li>PowerShell</li></ul></article>
 </div>
 <ol class="steps"><li><small>01</small><h4>Understand</h4><p>Define the problem and what success looks like.</p></li><li><small>02</small><h4>Plan</h4><p>Break it into parts and pick tools for a reason.</p></li><li><small>03</small><h4>Build</h4><p>Write readable code, one focused feature at a time.</p></li><li><small>04</small><h4>Test</h4><p>Check edge cases, learn from issues, improve.</p></li></ol>
+
+<div class="github-live" id="githubLive" style="margin-top:64px">
+  <div class="head"><span class="eyebrow">GitHub</span><h2 class="display">Live from <em>GitHub</em>.</h2><p>Recent public repositories are loaded from my GitHub profile. The list refreshes when the page is opened.</p></div>
+  <div class="grid" id="githubRepos" aria-live="polite">
+    <article class="tile"><p>Loading repositories from GitHub…</p></article>
+  </div>
+  <p style="margin-top:24px"><a class="link" href="https://github.com/msreaamparo-wq" target="_blank" rel="noopener noreferrer">Explore all repositories ↗</a></p>
+</div>
 </div></section>
 
 <section id="about"><div class="wrap about-grid"><div><span class="eyebrow">About</span><h2 class="display" style="margin-top:14px">Curiosity <em>first</em>.</h2></div>
@@ -55,6 +63,57 @@
 <a class="cta" href="https://github.com/msreaamparo-wq" target="_blank" rel="noopener noreferrer"><span>Find me on GitHub</span><b aria-hidden="true">→</b></a></div>
 <footer><span>© 2026 Rea Amparo</span><nav aria-label="Footer"><a href="#work">Work</a><a href="#toolkit">Toolkit</a><a href="#about">About</a><a href="#top">Back to top ↑</a></nav></footer></div></section>
 </main>
+<script>
+(function () {
+  var host = document.getElementById('githubRepos');
+  if (!host || !window.fetch) return;
+  var user = 'msreaamparo-wq';
+  var key = 'rea.portfolio.github.repos.v1';
+  var ttl = 60 * 60 * 1000;
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function (ch) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+    });
+  }
+  function render(repositories) {
+    var repos = (repositories || []).filter(function (repo) { return !repo.fork; }).slice(0, 6);
+    if (!repos.length) throw new Error('No public repositories were returned.');
+    host.innerHTML = repos.map(function (repo) {
+      var updated = repo.pushed_at ? new Date(repo.pushed_at).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '';
+      return '<article class="tile"><span class="status">' + escapeHtml(repo.language || 'Repository') + '</span>' +
+        '<h3>' + escapeHtml(repo.name) + '</h3><p>' + escapeHtml(repo.description || 'A project repository on GitHub.') + '</p>' +
+        '<ul class="tags"><li>' + escapeHtml(repo.language || 'Open source') + '</li><li>Updated ' + escapeHtml(updated) + '</li></ul>' +
+        '<a class="src" href="' + escapeHtml(repo.html_url) + '" target="_blank" rel="noopener noreferrer">View repository ↗</a></article>';
+    }).join('');
+  }
+  function showFallback() {
+    host.innerHTML = [
+      ['TRACE Attendance', 'https://github.com/msreaamparo-wq/TRACE-SSG-Attendance-System'],
+      ['Gender-Neutral Language Recognizer', 'https://github.com/msreaamparo-wq/Gender-Neutral-Language-Recognizer'],
+      ['Cacao Severity App', 'https://github.com/msreaamparo-wq/cacao_severity_app']
+    ].map(function (item) {
+      return '<article class="tile"><h3>' + escapeHtml(item[0]) + '</h3><p>Open the project repository on GitHub.</p><a class="src" href="' + escapeHtml(item[1]) + '" target="_blank" rel="noopener noreferrer">View repository ↗</a></article>';
+    }).join('');
+  }
+
+  try {
+    var cache = JSON.parse(localStorage.getItem(key) || 'null');
+    if (cache && Date.now() - cache.time < ttl && Array.isArray(cache.data)) render(cache.data);
+  } catch (e) {}
+  fetch('https://api.github.com/users/' + user + '/repos?per_page=100&sort=pushed', {
+    headers: { Accept: 'application/vnd.github+json' }
+  }).then(function (response) {
+    if (!response.ok) throw new Error('GitHub API request failed: ' + response.status);
+    return response.json();
+  }).then(function (repositories) {
+    try { localStorage.setItem(key, JSON.stringify({ time: Date.now(), data: repositories })); } catch (e) {}
+    render(repositories);
+  }).catch(function () {
+    if (!host.children.length || /Loading repositories/.test(host.textContent)) showFallback();
+  });
+})();
+</script>
 <script>(function(){var i=document.getElementById('intro'),r=document.documentElement;if(!i)return;
 function end(){if(i.classList.contains('done'))return;i.classList.add('done');r.classList.remove('intro-on');setTimeout(function(){i.remove()},800)}
 if(r.classList.contains('intro-on')){var t=setTimeout(end,3900);document.getElementById('introSkip').onclick=i.onclick=function(){clearTimeout(t);end()};document.addEventListener('keydown',function(e){if(e.key==='Escape'){clearTimeout(t);end()}})}else i.remove()})();</script>
