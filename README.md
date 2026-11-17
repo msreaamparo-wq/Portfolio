@@ -2,7 +2,7 @@
 
 A responsive, interactive developer portfolio built with **HTML, CSS, JavaScript, and Three.js**. It introduces my work in software development and applied computer vision through a dark charcoal interface with violet and cyan accents.
 
-**[View the live portfolio](https://msreaamparo-wq.github.io/)** · **[GitHub profile](https://github.com/msreaamparo-wq)**
+**[View the live portfolio](https://msreaamparo-wq.github.io/Portfolio/)** · **[GitHub profile](https://github.com/msreaamparo-wq)**
 
 ## Highlights
 
@@ -29,7 +29,7 @@ A responsive, interactive developer portfolio built with **HTML, CSS, JavaScript
 
 Three.js is loaded as an ES module from jsDelivr. The page also loads its font from Google Fonts, so an internet connection is needed for those external assets.
 
-## Run locally
+## GitHub Pages deployment\n\nThis repository is published at **https://msreaamparo-wq.github.io/Portfolio/**. The deployment workflow is `.github/workflows/deploy-pages.yml`. In the repository, open **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**, and save. Pushes to `main` then publish the site automatically.\n\n## Run locally
 
 No package installation or build step is required.
 
