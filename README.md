@@ -1,70 +1,35 @@
 # Rea Amparo — Developer Portfolio
 
-A responsive, interactive developer portfolio built with **HTML, CSS, JavaScript, and Three.js**. It introduces my work in software development and applied computer vision through a dark charcoal interface with violet and cyan accents.
+A personal portfolio built with HTML, CSS, vanilla JavaScript, and Three.js. The visual direction is a dark, editorial workspace: a television wall, project screens, oversized typography, restrained amber/rust accents, and original canvas artwork.
 
-**[View the live portfolio](https://msreaamparo-wq.github.io/Portfolio/)** · **[GitHub profile](https://github.com/msreaamparo-wq)**
+**[Open the portfolio](https://msreaamparo-wq.github.io/Portfolio/)** · **[GitHub profile](https://github.com/msreaamparo-wq)**
 
-## Highlights
+## Featured projects
 
-- **Interactive Three.js hero** with a 3D torus-knot sculpture, wireframe geometry, orbit rings, and floating satellite objects.
-- **Animated particle field** surrounding the 3D scene.
-- **Pointer-responsive movement** with smooth camera and object parallax.
-- **Interactive project cards** with pointer-based tilt and spotlight effects.
-- **Scroll-based reveals** for headings, project cards, and content sections.
-- **Animated counters** and a reading-progress indicator.
-- **Responsive navigation** with a mobile menu and keyboard dismissal.
-- **Reduced-motion support** that respects the user's system preference.
-- **Responsive rendering** with a lighter particle count on smaller screens.
+| Project | Focus | Status |
+|---|---|---|
+| TRACE — SSG Attendance | Flutter, Firebase, QR check-in, location verification | Prototype |
+| Kwarta Budget Tracker | Flutter, SQLite, Supabase, React browser version | Build |
+| Gender-Neutral Language Recognizer | Python, Flask, Finite State Automata | Web tool |
+| Cacao Vision | CNN-based Black Pod Rot severity research, Bayesian HPO | In progress |
+| COSMOS — Memory Gallery | Flutter, SQLite, IndexedDB, optional Supabase sync | Prototype; not yet verified |
+| Our Little Archive | Shared memory journal concept | Side project |
+| Void Experience | Browser-only visual experiment | Experiment |
 
-## Built with
+The page includes an interactive Three.js television-room introduction, a horizontal project rail with case studies, project-specific canvas illustrations, a toolkit constellation, responsive layouts, reduced-motion support, and a fallback when WebGL is unavailable. Project art is illustrative, not app screenshots or claims about real model outputs. Private repositories are labelled as private rather than linked as public source.
 
-| Area | Technologies |
-|---|---|
-| Structure | HTML5 |
-| Styling | CSS3 |
-| Interactions | JavaScript (ES modules) |
-| 3D graphics | Three.js |
-| Typography | Plus Jakarta Sans |
-| Hosting | GitHub Pages |
+Cacao Vision is still research in progress; no validated model accuracy is claimed. The COSMOS repository notes that the app still needs compilation and end-to-end testing.
 
-Three.js is loaded as an ES module from jsDelivr. The page also loads its font from Google Fonts, so an internet connection is needed for those external assets.
+## Run locally
 
-## GitHub Pages deployment\n\nThis repository is published at **https://msreaamparo-wq.github.io/Portfolio/**. The deployment workflow is `.github/workflows/deploy-pages.yml`. In the repository, open **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**, and save. Pushes to `main` then publish the site automatically.\n\n## Run locally
+No build step or package installation is required:
 
-No package installation or build step is required.
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/msreaamparo-wq/Portfolio.git
-   cd Portfolio
-   ```
-2. Start a local web server from the project folder:
-   ```bash
-   python -m http.server 5500
-   ```
-3. Open [http://localhost:5500](http://localhost:5500) in your browser.
-
-You can also open the folder in Visual Studio Code and use the Live Server extension.
-
-## Project structure
-
-```text
-Portfolio/
-├── assets/              # Images and visual assets
-├── css/
-│   └── clean.css        # Layout, theme, responsive styles, and motion states
-├── js/
-│   ├── interactions.js  # Navigation and project-card interactions
-│   ├── lively.js        # Scroll reveals, counters, and motion effects
-│   ├── photo.js         # Portrait effect setup
-│   └── three-scene.js   # Three.js hero scene
-└── index.html           # Portfolio content and page structure
+```bash
+python -m http.server 8080
 ```
 
-## Accessibility and performance
+Open [http://localhost:8080](http://localhost:8080). Three.js r128, GSAP 3.12.5, and the typefaces load from external CDNs, so an internet connection is needed for the full visual experience.
 
-The experience checks the `prefers-reduced-motion` setting and avoids continuous motion when reduced motion is requested. The 3D renderer also caps pixel density and uses fewer particles on smaller screens to reduce rendering cost.
+Edit `REA.projects` and `REA.toolkit` in `js/config.js` to change the project list and technologies. Add genuine screenshots under `assets/projects/` and list them in a project's `shots` array.
 
----
-
-**Build with purpose. Learn continuously. Make things that work.**
+Push changes to `main` to publish through the existing GitHub Pages workflow.
