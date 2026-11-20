@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fbfaf7">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#111413">
+<meta name="color-scheme" content="dark">
 <title>Rea Amparo — Developer Portfolio</title>
 <meta name="description" content="Rea Amparo — Computer Science student building mobile apps, web tools and practical software.">
 <meta property="og:title" content="Rea Amparo — Developer Portfolio">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>
 /* Adds the intro flag before first paint so portfolio content never flashes ahead of the intro. */
@@ -58,22 +58,23 @@ if(play){d.classList.add('intro-on');d.classList.remove('no-intro');}else{d.clas
 
 <!-- ───────────── SCENE 03 · HERO ───────────── -->
 <section class="hero" id="top" aria-labelledby="heroTitle">
-  <p class="kicker mono">Computer Science · Software Development · Philippines</p>
-  <h1 class="mega" id="heroTitle" aria-label="Rea Amparo"><span class="line l1" aria-hidden="true">REA</span><span class="line l2" aria-hidden="true">AMPARO</span></h1>
-  <div class="hero-rule" aria-hidden="true"></div>
   <div class="hero-grid">
-      <div class="hero-copy">
-        <ul class="roles" aria-label="Roles"><li><span>Computer Science Student</span></li><li><span>Developer</span></li><li><span>Creative Technologist</span></li></ul>
-        <p class="lead">I build apps and web tools, learn by testing ideas, and work through the details that make software useful.</p>
-        <div class="actions"><a class="cta" href="#work"><span>See the projects</span><b aria-hidden="true">→</b></a><a class="link" href="https://github.com/msreaamparo-wq" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-        <dl class="nums"><div><dt>Selected builds</dt><dd>07</dd></div><div><dt>Core languages</dt><dd>07</dd></div><div><dt>Focus areas</dt><dd>03</dd></div></dl>
-      </div>
-      <figure class="portrait">
-        <img src="assets/rea.jpg" width="560" height="700" alt="Portrait of Rea Amparo" fetchpriority="high">
-        <figcaption><span>Rea Amparo</span><span>Based in the Philippines</span></figcaption>
-      </figure>
+    <div class="hero-copy">
+      <p class="kicker mono"><span class="kicker-mark"></span> BS Computer Science · Philippines</p>
+      <h1 class="mega" id="heroTitle" aria-label="Rea Amparo"><span class="line l1" aria-hidden="true">Rea</span><span class="line l2" aria-hidden="true">Amparo.</span></h1>
+      <p class="lead">I turn ideas into useful software.</p>
+      <p class="hero-intro">From mobile apps and web tools to computer-vision research, I like building things I can test, improve, and explain.</p>
+      <ul class="roles" aria-label="Areas of work"><li>Mobile development</li><li>Web development</li><li>Computer vision</li></ul>
+      <div class="actions"><a class="cta" href="#work"><span>Explore my work</span><b aria-hidden="true">↗</b></a><a class="link" href="https://github.com/msreaamparo-wq" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></div>
+      <dl class="nums"><div><dt>Selected projects</dt><dd>07</dd></div><div><dt>Core languages</dt><dd>07</dd></div><div><dt>Focus areas</dt><dd>03</dd></div></dl>
+    </div>
+    <figure class="portrait">
+      <img src="assets/rea.jpg" width="560" height="700" alt="Portrait of Rea Amparo" fetchpriority="high">
+      <figcaption><span>Rea Amparo</span><span>Developer · Philippines</span></figcaption>
+      <span class="portrait-index mono" aria-hidden="true">01 / 01</span>
+    </figure>
   </div>
-  <a class="scroll-cue mono" href="#work" aria-label="Scroll to projects">Scroll <i aria-hidden="true"></i></a>
+  <a class="scroll-cue mono" href="#work" aria-label="Scroll to selected projects">Scroll to explore <span aria-hidden="true">↓</span></a>
 </section>
 
 <div class="strip" aria-hidden="true"><div class="strip-in"><span>Mobile</span><i>✦</i><span>Web</span><i>✦</i><span>Backend</span><i>✦</i><span>Computer vision</span><i>✦</i><span>Mobile</span><i>✦</i><span>Web</span><i>✦</i><span>Backend</span><i>✦</i><span>Computer vision</span><i>✦</i><span>Mobile</span><i>✦</i><span>Web</span><i>✦</i><span>Backend</span><i>✦</i><span>Computer vision</span><i>✦</i></div></div>
@@ -83,7 +84,7 @@ if(play){d.classList.add('intro-on');d.classList.remove('no-intro');}else{d.clas
   <div class="wrap head">
     <span class="eyebrow mono" data-reveal>Selected work · 07</span>
     <h2 class="display" id="workTitle">Selected projects.</h2>
-    <p data-reveal>Apps, research and experiments. Some are still in progress; I’ve labelled them that way.</p>
+    <p data-reveal>A selection of mobile apps, web tools, research, and experiments — with each project’s current status clearly marked.</p>
   </div>
   <div class="rail-bar wrap"><span class="mono" id="railCount">01 / 07</span><span class="rail-hint mono">Drag, scroll sideways or use ← →</span>
     <span class="rail-btns"><button type="button" id="railPrev" aria-label="Previous project" data-magnet>←</button><button type="button" id="railNext" aria-label="Next project" data-magnet>→</button></span></div>
@@ -117,7 +118,7 @@ if(play){d.classList.add('intro-on');d.classList.remove('no-intro');}else{d.clas
 <!-- ───────────── TOOLKIT ───────────── -->
 <section id="toolkit" class="toolkit" aria-labelledby="toolkitTitle">
   <div class="wrap">
-    <div class="head"><span class="eyebrow mono" data-reveal>Toolkit</span><h2 class="display" id="toolkitTitle">Tools I work with.</h2><p data-reveal>Tools I’ve used across coursework and personal builds. The list changes as I learn. Hover a name to find it in the constellation.</p></div>
+    <div class="head"><span class="eyebrow mono" data-reveal>Toolkit</span><h2 class="display" id="toolkitTitle">Tools I work with.</h2><p data-reveal>Technologies I’ve used across coursework, research, and personal builds. My toolkit keeps growing as I learn.</p></div>
     <div class="constel-wrap"><canvas id="constellation" aria-hidden="true"></canvas></div>
     <div class="tk-groups" id="toolkitGroups"></div>
     <ol class="steps" aria-label="How I work"><li data-reveal><small class="mono">01</small><h4>Understand</h4><p>Define the problem and what success looks like.</p></li><li data-reveal><small class="mono">02</small><h4>Plan</h4><p>Break it into parts and pick tools for a reason.</p></li><li data-reveal><small class="mono">03</small><h4>Build</h4><p>Write readable code, one focused feature at a time.</p></li><li data-reveal><small class="mono">04</small><h4>Test</h4><p>Check edge cases, learn from issues, improve.</p></li></ol></div>
