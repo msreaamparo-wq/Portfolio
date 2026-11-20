@@ -627,3 +627,6 @@ html.rv .display .wd{transition:none}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* Keep native pointer behaviour in the simplified interface. */
+html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor [data-cursor]{cursor:auto!important}
