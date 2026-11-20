@@ -27,8 +27,9 @@
     try { replay = sessionStorage.getItem('rea.replay') === '1'; sessionStorage.removeItem('rea.replay'); } catch (e) {}
     var deepLink = location.hash.length > 1 && location.hash !== '#top';
     if (U.reducedMotion()) return plain('prefers-reduced-motion');
-    if (/[?&]nointro/.test(params)) return plain('?nointro');
-    if (deepLink && !replay && !/[?&]intro/.test(params)) return plain('deep link');
+    /* Default to the lightweight, immediately usable portfolio. The 3D room is opt-in. */
+    if (/[?&]nointro/.test(params) || (!replay && !/[?&]intro(?:[=&]|$)/.test(params))) return plain('default fast load');
+    if (deepLink && !replay && !/[?&]intro(?:[=&]|$)/.test(params)) return plain('deep link');
     if (!window.THREE || !window.gsap) return plain('Three.js or GSAP did not load');
     if (!U.hasWebGL()) return plain('WebGL unavailable');
     try {
