@@ -53,17 +53,11 @@
 
   function renderTimeline() {
     var ol = $('#timeline'); if (!ol) return;
-    chapterCanvas = $('#chapterCanvas'); chapterView = $('#chapterView');
     CHAPTERS.forEach(function (c, i) {
-      var li = E('li'); li.innerHTML = '<button type="button" class="tl-item" aria-pressed="false" data-cursor="View"><small class="mono">' + String(i + 1).padStart(2, '0') + ' · ' + esc(c.k) + '</small><span>' + esc(c.t) + '</span><em>' + esc(c.d) + '</em></button>';
-      $('button', li).addEventListener('click', function () { setChapter(i); }); $('button', li).addEventListener('focus', function () { setChapter(i); }); ol.appendChild(li);
+      var li = E('li', 'story-card');
+      li.innerHTML = '<span class="story-number mono">' + String(i + 1).padStart(2, '0') + ' · ' + esc(c.k) + '</span><h3>' + esc(c.t) + '</h3><p>' + esc(c.d) + '</p>';
+      ol.appendChild(li);
     });
-    chapterPrev = R.fx.preview(chapterCanvas, CHAPTERS[0].art);
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) setChapter($$('.tl-item', ol).indexOf($('button', e.target))); }); }, { rootMargin: '-45% 0px -45% 0px' });
-      $$('li', ol).forEach(function (li) { io.observe(li); });
-    }
-    setChapter(0);
   }
   function setChapter(i) {
     if (i < 0 || i === chapterIdx) return; chapterIdx = i; var c = CHAPTERS[i];
@@ -76,14 +70,9 @@
   function renderToolkit() {
     var host = $('#toolkitGroups'); if (!host) return;
     R.toolkit.forEach(function (g) {
-      var s = E('section', 'tk-group'); s.innerHTML = '<h3>' + esc(g.name) + '</h3><ul class="chips">' + g.items.map(function (n) { return '<li><button type="button" class="chip" data-magnet aria-pressed="false" data-name="' + esc(n) + '">' + esc(n) + '</button></li>'; }).join('') + '</ul>'; host.appendChild(s);
-    });
-    constel = R.fx.constellation($('#constellation'), R.toolkit);
-    var pinned = null;
-    $$('.chip', host).forEach(function (b) {
-      b.addEventListener('pointerenter', function () { constel.highlight(b.dataset.name); }); b.addEventListener('focus', function () { constel.highlight(b.dataset.name); });
-      b.addEventListener('pointerleave', function () { constel.highlight(pinned); }); b.addEventListener('blur', function () { constel.highlight(pinned); });
-      b.addEventListener('click', function () { pinned = pinned === b.dataset.name ? null : b.dataset.name; $$('.chip', host).forEach(function (o) { o.setAttribute('aria-pressed', o.dataset.name === pinned ? 'true' : 'false'); }); constel.highlight(pinned); });
+      var s = E('section', 'tk-group');
+      s.innerHTML = '<h3>' + esc(g.name) + '</h3><ul class="chips">' + g.items.map(function (n) { return '<li><span class="chip">' + esc(n) + '</span></li>'; }).join('') + '</ul>';
+      host.appendChild(s);
     });
   }
 
@@ -103,18 +92,9 @@
   }
 
   function renderContact() {
-    var gh = $('#contactLinks'); if (!gh) return;
-    if (cfg.email) { var a = E('a', 'big-link', '<span>Email</span><b>' + esc(cfg.email) + '</b>'); a.href = 'mailto:' + cfg.email; a.setAttribute('data-cursor', 'Write'); gh.appendChild(a); }
-    var big = $$('.mega-contact .line'); var chars = [];
-    big.forEach(function (l) { chars = chars.concat(U.splitChars(l)); });
-    var box = $('.mega-contact');
-    if (!calm && U.finePointer()) {
-      box.addEventListener('pointermove', function (e) {
-        chars.forEach(function (c) { var r = c.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), d = Math.hypot(dx, dy), k = Math.max(0, 1 - d / 220);
-          c.style.transform = 'translate3d(' + (-dx * k * .12).toFixed(1) + 'px,' + (-dy * k * .12).toFixed(1) + 'px,0) scale(' + (1 + k * .22).toFixed(3) + ')'; c.style.color = k > .35 ? 'var(--amber)' : ''; });
-      });
-      box.addEventListener('pointerleave', function () { chars.forEach(function (c) { c.style.transform = ''; c.style.color = ''; }); });
-    }
+    var host = $('#contactLinks'); if (!host || !cfg.email) return;
+    var a = E('a', 'big-link', '<span>Email</span><b>' + esc(cfg.email) + ' ↗</b>');
+    a.href = 'mailto:' + cfg.email; host.appendChild(a);
   }
 
   /* ───────── generic reveal-on-scroll ───────── */
@@ -228,8 +208,7 @@
   P.init = function () {
     var h1 = $('.mega'); $$('.mega .line').forEach(function (l) { U.splitChars(l); l.removeAttribute('aria-label'); l.setAttribute('aria-hidden', 'true'); });
     if (h1) h1.setAttribute('aria-label', 'Rea Amparo');
-    U.splitWords($('.lead'));
     renderProjects(); renderTimeline(); renderToolkit(); renderContact(); bindReveals(); bindNav(); bindCase();
-    /* Clean UI: native pointer and no magnetic/scroll-driven movement. */
+    /* No intro or cursor effects: keep navigation and content immediate. */
   };
 })();
