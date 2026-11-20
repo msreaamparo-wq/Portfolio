@@ -16,8 +16,8 @@
 <link rel="stylesheet" href="css/style.css">
 <script>
 /* Adds the intro flag before first paint so portfolio content never flashes ahead of the intro. */
-(function(){var d=document.documentElement;try{var r=matchMedia('(prefers-reduced-motion: reduce)').matches,h=location.hash.length>1&&location.hash!=='#top',p=sessionStorage.getItem('rea.replay');
-if(p||(!r&&!h&&!/[?&]nointro/.test(location.search)))d.classList.add('intro-on');}catch(e){}})();
+(function(){var d=document.documentElement;try{var p=sessionStorage.getItem('rea.replay'),play=p==='1'||/[?&]intro(?:[=&]|$)/.test(location.search);
+if(play){d.classList.add('intro-on');d.classList.remove('no-intro');}else{d.classList.add('no-intro');}}catch(e){d.classList.add('no-intro');}})();
 </script>
 <noscript><style>.intro,#stage,.cursor,.grain{display:none!important}html.intro-on{overflow:auto}</style></noscript>
 </head>
