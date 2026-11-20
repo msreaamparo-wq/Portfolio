@@ -27,16 +27,10 @@
         (p.repo ? '<a class="link" href="' + esc(p.repo) + '" target="_blank" rel="noopener noreferrer">' + esc(p.repoLabel || 'View source') + ' ↗</a>' : '<span class="source-note mono">' + esc(p.repoLabel || 'Source is private') + '</span>') +
         (p.demo ? '<a class="link" href="' + esc(p.demo) + '" target="_blank" rel="noopener noreferrer">Live demo ↗</a>' : '') + '</div></div>';
       rail.appendChild(a); panels.push(a);
-      var media = $('.panel-media', a), cv = $('canvas', a), pv = R.fx.preview(cv, p.id), title = $('.panel-title', a);
+      var media = $('.panel-media', a), cv = $('canvas', a);
+      R.fx.preview(cv, p.id);
       $('.open', a).addEventListener('click', function () { P.openCase(p.id, { from: 'gallery', trigger: this }); });
       media.addEventListener('click', function (e) { P.openCase(p.id, { x: e.clientX, y: e.clientY, from: 'gallery', trigger: $('.open', a) }); });
-      media.addEventListener('pointermove', function (e) {
-        var r = media.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
-        if (!calm) media.style.transform = 'rotateY(' + (px * 12).toFixed(2) + 'deg) rotateX(' + (-py * 10).toFixed(2) + 'deg) translateZ(18px)';
-        media.style.setProperty('--sx', (px + .5) * 100 + '%'); media.style.setProperty('--sy', (py + .5) * 100 + '%');
-      });
-      media.addEventListener('pointerleave', function () { media.style.transform = ''; });
-      a.addEventListener('pointerenter', function () { if (!calm) U.scramble(title, p.title, 520); });
     });
     var prev = $('#railPrev'), next = $('#railNext'), count = $('#railCount');
     function step(d) { var w = panels[0].getBoundingClientRect().width + 32; rail.scrollBy({ left: d * w, behavior: calm ? 'auto' : 'smooth' }); }
@@ -236,6 +230,6 @@
     if (h1) h1.setAttribute('aria-label', 'Rea Amparo');
     U.splitWords($('.lead'));
     renderProjects(); renderTimeline(); renderToolkit(); renderContact(); bindReveals(); bindNav(); bindCase();
-    R.fx.scroll(); R.fx.cursor(); R.fx.magnet();
+    /* Clean UI: native pointer and no magnetic/scroll-driven movement. */
   };
 })();
