@@ -9,6 +9,7 @@
     { k: 'Mobile', t: 'Apps and event tools', art: 'trace', d: 'TRACE is a Flutter attendance prototype with event management, QR check-in, role-based access and location verification.' },
     { k: 'Offline-first', t: 'Kwarta Budget Tracker', art: 'kwarta', d: 'Kwarta saves budget records locally first, then syncs with Supabase when the connection returns.' },
     { k: 'Web', t: 'Language tools', art: 'gnlr', d: 'The Gender-Neutral Language Recognizer checks configured terms and suggests more inclusive wording.' },
+    { k: 'Fundraising', t: 'CauseVia', art: 'causevia', d: 'CauseVia is an alumni fundraising platform for school-related initiatives, with project campaigns, general donations, and admin review workflows.' },
     { k: 'Research', t: 'Cacao Vision and COSMOS', art: 'cacao', d: 'Cacao Vision explores CNN-based Black Pod Rot severity classification. COSMOS is a photo memory-gallery prototype; both still need validation.' },
     { k: 'Experiments', t: 'Small ideas and personal builds', art: 'cosmo', d: 'I also make smaller experiments, from visual browser effects to ways of organising photos and memories.' }
   ];
