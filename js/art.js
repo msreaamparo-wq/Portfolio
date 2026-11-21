@@ -59,6 +59,31 @@
     mono(c, h * .045, 500); c.fillStyle = 'rgba(236,228,212,.55)'; c.fillText('RESEARCH · IN PROGRESS · ILLUSTRATIVE', w * .05, h * .94);
   };
 
+
+  /* ── CauseVia: alumni giving + campaign progress ── */
+  art.causevia = function (c, w, h, t, m) {
+    c.fillStyle = '#f4f0e9'; c.fillRect(0, 0, w, h);
+    c.fillStyle = '#75162d'; c.fillRect(0, 0, w, h * .19);
+    mono(c, h * .055, 700); c.fillStyle = '#fbf8f2'; c.fillText('CAUSEVIA', w * .06, h * .115);
+    mono(c, h * .038, 500); c.fillStyle = '#e4c58c'; c.fillText('ALUMNI LEGACY', w * .68, h * .115);
+    sans(c, h * .12); c.fillStyle = '#2c2427'; c.fillText('FUNDING THE', w * .07, h * .39);
+    c.fillStyle = '#75162d'; c.fillText('FUTURE.', w * .07, h * .53);
+    mono(c, h * .042, 500); c.fillStyle = '#766970'; c.fillText('SCHOOL PROJECTS · ALUMNI GIVING', w * .07, h * .62);
+    var x = w * .07, y = h * .72, ww = w * .86, hh = h * .17;
+    c.fillStyle = '#fffaf5'; c.fillRect(x, y, ww, hh);
+    c.strokeStyle = 'rgba(117,22,45,.18)'; c.lineWidth = 1; c.strokeRect(x, y, ww, hh);
+    mono(c, h * .035, 700); c.fillStyle = '#75162d'; c.fillText('ACTIVE INITIATIVE', x + ww * .04, y + hh * .34);
+    c.fillStyle = 'rgba(117,22,45,.12)'; c.fillRect(x + ww * .04, y + hh * .57, ww * .92, h * .018);
+    c.fillStyle = '#c49b70'; c.fillRect(x + ww * .04, y + hh * .57, ww * (.42 + .04 * Math.sin(t * .7)), h * .018);
+    mono(c, h * .032, 500); c.fillStyle = '#8a7c81'; c.fillText('CAMPAIGNS · DONATIONS · TRANSPARENCY', x + ww * .04, y + hh * .86);
+    c.strokeStyle = 'rgba(117,22,45,.16)'; c.lineWidth = 1;
+    for (var i = 0; i < 3; i++) {
+      var px = w * (.76 + (m ? (m.x - .5) * .008 : 0)), py = h * (.3 + i * .075);
+      c.beginPath(); c.arc(px, py, h * (.018 + i * .004), 0, Math.PI * 2); c.stroke();
+      c.beginPath(); c.moveTo(px - h * .035, py); c.lineTo(px - h * .07, py); c.stroke();
+    }
+  };
+
   /* ── Gender-Neutral Language Recognizer: animated word replacement ── */
   var pairs = [['chairman', 'chairperson'], ['policeman', 'police officer'], ['mankind', 'humanity'], ['manpower', 'workforce'], ['he or she', 'they']];
   art.gnlr = function (c, w, h, t, m) {
